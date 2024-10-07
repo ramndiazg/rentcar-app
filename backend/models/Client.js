@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-const { Schema } = mongoose;
+const mongoose = require('mongoose');
+const { Schema } = mongoose.Schema;
 
 const ClientSchema = new Schema({
     name: {type: String, required: true},
@@ -17,6 +17,6 @@ const ClientSchema = new Schema({
     address: {type: String, required: true},
     email: { type: String, unique: true, format: 'email', required: true},
     createdAt: { type: Date, default: Date.now , required: true}
-  });
+  }, {Timestamp: true});
 
-const Client = mongoose.model('Client', ClientSchema);
+module.exports = mongoose.model('Client', ClientSchema);

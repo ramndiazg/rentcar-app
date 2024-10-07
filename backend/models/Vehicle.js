@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-const { Schema } = mongoose;
+const mongoose = require('mongoose');
+const { Schema } = mongoose.Schema;
 
 const VehicleSchema = new Schema({
     make: {type: String, required: true},
@@ -12,6 +12,6 @@ const VehicleSchema = new Schema({
     status: { type: String, enum: ['available', 'in use', 'maintenance'], default: 'maintenance',message: '{VALUE} is not supported', required: true},
     comments: [{ body: String, date: Date }],
     lastServiceDate: Date
-  });
+  }, {Timestamp: true});
 
-const Vehicle = mongoose.model('Vehicle', VehicleSchema);
+module.exports = mongoose.model('Vehicle', VehicleSchema);
