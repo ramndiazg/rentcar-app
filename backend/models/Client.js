@@ -1,19 +1,14 @@
+const PersonSchema = require("./Person.js");
 const mongoose = require("mongoose");
-const { Schema } = mongoose.Schema;
+const { Schema } = mongoose;
 
-const ClientSchema = extendSchema(
-  UserSchema,
+const ClientSchema = new Schema(
   {
+    ...PersonSchema.obj,
     contact: { type: String, required: true },
     address: { type: String, required: true },
-    status: {
-      type: String,
-      enum: ["in_process", "rented", "none", "bloqued"],
-      default: "none",
-      required: true,
-    },
   },
-  { Timestamp: true }
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("Client", ClientSchema);

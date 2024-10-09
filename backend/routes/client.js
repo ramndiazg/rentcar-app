@@ -1,4 +1,5 @@
 const express = require("express");
+const Client = require("../models/Client.js");
 const clientRoute = express.Router();
 
 clientRoute.get("/client", (req, res) => {
@@ -9,8 +10,21 @@ clientRoute.get("/client:id", (req, res) => {
   res.json({ message: "getting selected client!" });
 });
 
-clientRoute.post("/client", (req, res) => {
-  res.json({ message: "post new client!" });
+clientRoute.post("/client", async (req, res) => {
+  const { name, phone, email, password, contact, address } = req.body;
+  try {
+    const client = await Client.create({
+      name,
+      phone,
+      email,
+      password,
+      contact,
+      address,
+    });
+    res.status(200).json(client);
+  } catch (err) {
+    res.status(400).json({ err: err });
+  }
 });
 
 clientRoute.delete("/client:id", (req, res) => {
