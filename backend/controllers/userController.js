@@ -1,4 +1,5 @@
 const User = require("../models/User.js");
+const mongoose = require("mongoose");
 
 //get all users
 const getUsers = async (req, res) => {
@@ -8,6 +9,9 @@ const getUsers = async (req, res) => {
 //get selected user
 const getUser = async (req, res) => {
   const { id } = req.params;
+  if(!mongoose.Types.ObjectId.isValid(id)){
+    return res.status(404).json({ err: "User not found" })
+  }
   const user = await User.findById(id);
   if (!user) {
     return res.status(404).json({ err: "User not found" });
@@ -29,9 +33,21 @@ const createUser = async (req, res) => {
 //update selected user
 
 //delete selected user
+const deleteUser = async (req, res) => {
+    const { id } = req.params;
+    if(!mongoose.Types.ObjectId.isValid(id)){
+      return res.status(404).json({ err: "User not found" })
+    }
+    const user = await User.findByIdAndDelete(id);
+    if (!user) {
+      return res.status(404).json({ err: "User not found" });
+    }
+    res.status(200).json({ message: "User deleted" });
+  };
 
 module.exports = {
   createUser,
   getUsers,
   getUser,
+  deleteUser,
 };

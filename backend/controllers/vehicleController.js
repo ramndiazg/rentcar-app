@@ -1,4 +1,5 @@
 const Vehicle = require("../models/Vehicle.js");
+const mongoose = require("mongoose");
 
 //get all vehicles
 const getVehicles = async (req, res) => {
@@ -8,6 +9,9 @@ const getVehicles = async (req, res) => {
 //get selected vehicle
 const getVehicle = async (req, res) => {
   const { id } = req.params;
+  if(!mongoose.Types.ObjectId.isValid(id)){
+    return res.status(404).json({ err: "Vehiclenot found" })
+  }
   const vehicle = await Vehicle.findById(id);
   if (!vehicle) {
     return res.status(404).json({ err: "Vehicle not found" });
@@ -51,9 +55,21 @@ const createVehicle = async (req, res) => {
 //update selected vehicle
 
 //delete selected vehicle
+const deleteVehicle = async (req, res) => {
+    const { id } = req.params;
+    if(!mongoose.Types.ObjectId.isValid(id)){
+      return res.status(404).json({ err: "Vehiclenot found" })
+    }
+    const vehicle = await Vehicle.findByIdAndDelete(id);
+    if (!vehicle) {
+      return res.status(404).json({ err: "Vehicle not found" });
+    }
+    res.status(200).json({ message: "Vehicle deleted" });
+  };
 
 module.exports = {
   createVehicle,
   getVehicles,
   getVehicle,
+  deleteVehicle,
 };

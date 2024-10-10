@@ -1,4 +1,5 @@
 const Client = require("../models/Client.js");
+const mongoose = require("mongoose");
 
 //get all client
 const getClients = async (req, res) => {
@@ -8,6 +9,9 @@ const getClients = async (req, res) => {
 //get selected client
 const getClient = async (req, res) => {
   const { id } = req.params;
+  if(!mongoose.Types.ObjectId.isValid(id)){
+    return res.status(404).json({ err: "Client not found" })
+  }
   const client = await Client.findById(id);
   if (!client) {
     return res.status(404).json({ err: "Client not found" });
@@ -36,9 +40,21 @@ const createClient = async (req, res) => {
 //update selected client
 
 //delete selected client
+const deleteClient = async (req, res) => {
+    const { id } = req.params;
+    if(!mongoose.Types.ObjectId.isValid(id)){
+      return res.status(404).json({ err: "Client not found" })
+    }
+    const client = await Client.findByIdAndDelete(id);
+    if (!client) {
+      return res.status(404).json({ err: "Client not found" });
+    }
+    res.status(200).json({ message: "Client deleted" });
+  };
 
 module.exports = {
   createClient,
   getClients,
   getClient,
+  deleteClient,
 };

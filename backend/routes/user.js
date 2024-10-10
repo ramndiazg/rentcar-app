@@ -3,6 +3,7 @@ const {
   createUser,
   getUsers,
   getUser,
+  deleteUser,
 } = require("../controllers/userController.js");
 const userRoute = express.Router();
 
@@ -12,9 +13,7 @@ userRoute.get("/user/:id", getUser);
 
 userRoute.post("/user", createUser);
 
-userRoute.delete("/user:id", (req, res) => {
-  res.json({ message: "deleting selected user!" });
-});
+userRoute.delete("/user/:id", deleteUser);
 
 userRoute.patch("/user:id", (req, res) => {
   res.json({ message: "updating selected user!" });
