@@ -1,10 +1,11 @@
 const express = require("express");
-const { createUser } = require("../controllers/userController.js");
+const {
+   createUser,
+   getUsers
+  } = require("../controllers/userController.js");
 const userRoute = express.Router();
 
-userRoute.get("/user", (req, res) => {
-  res.json({ message: "getting all users!" });
-});
+userRoute.get("/user", getUsers);
 
 userRoute.get("/user:id", (req, res) => {
   res.json({ message: "getting selected user!" });

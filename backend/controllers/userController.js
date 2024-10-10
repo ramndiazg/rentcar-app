@@ -1,7 +1,10 @@
 const User = require("../models/User.js");
 
 //get all users
-
+const getUsers = async (req, res) =>{
+    const users = await User.find({}).sort({createdAt: -1})
+    res.status(200).json(users)
+};
 //get selected user
 
 //create a new user
@@ -22,4 +25,5 @@ const createUser = async (req, res) => {
 
 module.exports = {
   createUser,
+  getUsers
 };
