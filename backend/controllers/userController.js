@@ -9,8 +9,8 @@ const getUsers = async (req, res) => {
 //get selected user
 const getUser = async (req, res) => {
   const { id } = req.params;
-  if(!mongoose.Types.ObjectId.isValid(id)){
-    return res.status(404).json({ err: "User not found" })
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ err: "User not found" });
   }
   const user = await User.findById(id);
   if (!user) {
@@ -20,10 +20,17 @@ const getUser = async (req, res) => {
 };
 //create a new user
 const createUser = async (req, res) => {
-  const { name, phone, email, password, role } = req.body;
+  const { firstName, lastName, phone, email, password, role } = req.body;
   //adding new user to db.
   try {
-    const user = await User.create({ name, phone, email, password, role });
+    const user = await User.create({
+      firstName,
+      lastName,
+      phone,
+      email,
+      password,
+      role,
+    });
     res.status(200).json(user);
   } catch (err) {
     res.status(400).json({ err: err });
@@ -31,23 +38,44 @@ const createUser = async (req, res) => {
 };
 
 //update selected user
-
-//delete selected user
-const deleteUser = async (req, res) => {
-    const { id } = req.params;
-    if(!mongoose.Types.ObjectId.isValid(id)){
-      return res.status(404).json({ err: "User not found" })
-    }
-    const user = await User.findByIdAndDelete(id);
+const updateUser = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ err: "User not found" });
+  }
+  try {
+    const user = await User.findOneAndUpdate(
+      { _id: id },
+      {
+        ...req.body,
+      }
+    );
     if (!user) {
       return res.status(404).json({ err: "User not found" });
     }
-    res.status(200).json({ message: "User deleted" });
-  };
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(400).json({ err: err });
+  }
+};
+
+//delete selected user
+const deleteUser = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ err: "User not found" });
+  }
+  const user = await User.findByIdAndDelete(id);
+  if (!user) {
+    return res.status(404).json({ err: "User not found" });
+  }
+  res.status(200).json({ message: "User deleted" });
+};
 
 module.exports = {
   createUser,
   getUsers,
   getUser,
   deleteUser,
+  updateUser,
 };

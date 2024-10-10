@@ -4,6 +4,7 @@ const {
   getUsers,
   getUser,
   deleteUser,
+  updateUser,
 } = require("../controllers/userController.js");
 const userRoute = express.Router();
 
@@ -15,8 +16,6 @@ userRoute.post("/user", createUser);
 
 userRoute.delete("/user/:id", deleteUser);
 
-userRoute.patch("/user:id", (req, res) => {
-  res.json({ message: "updating selected user!" });
-});
+userRoute.patch("/user/:id", updateUser);
 
 module.exports = userRoute;

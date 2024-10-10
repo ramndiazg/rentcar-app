@@ -4,6 +4,7 @@ const {
   getClient,
   getClients,
   deleteClient,
+  updateClient,
 } = require("../controllers/clientController.js");
 const clientRoute = express.Router();
 
@@ -15,8 +16,6 @@ clientRoute.post("/client", createClient);
 
 clientRoute.delete("/client/:id", deleteClient);
 
-clientRoute.patch("/client:id", (req, res) => {
-  res.json({ message: "updating selected client!" });
-});
+clientRoute.patch("/client/:id", updateClient);
 
 module.exports = clientRoute;

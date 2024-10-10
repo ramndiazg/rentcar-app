@@ -9,8 +9,8 @@ const getVehicles = async (req, res) => {
 //get selected vehicle
 const getVehicle = async (req, res) => {
   const { id } = req.params;
-  if(!mongoose.Types.ObjectId.isValid(id)){
-    return res.status(404).json({ err: "Vehiclenot found" })
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ err: "Vehiclenot found" });
   }
   const vehicle = await Vehicle.findById(id);
   if (!vehicle) {
@@ -53,23 +53,44 @@ const createVehicle = async (req, res) => {
 };
 
 //update selected vehicle
-
-//delete selected vehicle
-const deleteVehicle = async (req, res) => {
-    const { id } = req.params;
-    if(!mongoose.Types.ObjectId.isValid(id)){
-      return res.status(404).json({ err: "Vehiclenot found" })
-    }
-    const vehicle = await Vehicle.findByIdAndDelete(id);
+const updateVehicle = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ err: "Vehicle not found" });
+  }
+  try {
+    const vehicle = await Vehicle.findOneAndUpdate(
+      { _id: id },
+      {
+        ...req.body,
+      }
+    );
     if (!vehicle) {
       return res.status(404).json({ err: "Vehicle not found" });
     }
-    res.status(200).json({ message: "Vehicle deleted" });
-  };
+    res.status(200).json(vehicle);
+  } catch (err) {
+    res.status(400).json({ err: err });
+  }
+};
+
+//delete selected vehicle
+const deleteVehicle = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ err: "Vehiclenot found" });
+  }
+  const vehicle = await Vehicle.findByIdAndDelete(id);
+  if (!vehicle) {
+    return res.status(404).json({ err: "Vehicle not found" });
+  }
+  res.status(200).json({ message: "Vehicle deleted" });
+};
 
 module.exports = {
   createVehicle,
   getVehicles,
   getVehicle,
   deleteVehicle,
+  updateVehicle,
 };

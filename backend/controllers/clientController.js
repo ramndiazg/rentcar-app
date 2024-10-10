@@ -9,8 +9,8 @@ const getClients = async (req, res) => {
 //get selected client
 const getClient = async (req, res) => {
   const { id } = req.params;
-  if(!mongoose.Types.ObjectId.isValid(id)){
-    return res.status(404).json({ err: "Client not found" })
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ err: "Client not found" });
   }
   const client = await Client.findById(id);
   if (!client) {
@@ -20,11 +20,13 @@ const getClient = async (req, res) => {
 };
 //create a new client
 const createClient = async (req, res) => {
-  const { name, phone, email, password, address, contact } = req.body;
+  const { firstName, lastName, phone, email, password, address, contact } =
+    req.body;
   //adding new client to db.
   try {
     const client = await Client.create({
-      name,
+      firstName,
+      lastName,
       phone,
       email,
       password,
@@ -38,23 +40,44 @@ const createClient = async (req, res) => {
 };
 
 //update selected client
-
-//delete selected client
-const deleteClient = async (req, res) => {
-    const { id } = req.params;
-    if(!mongoose.Types.ObjectId.isValid(id)){
-      return res.status(404).json({ err: "Client not found" })
-    }
-    const client = await Client.findByIdAndDelete(id);
+const updateClient = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ err: "Client not found" });
+  }
+  try {
+    const client = await Client.findOneAndUpdate(
+      { _id: id },
+      {
+        ...req.body,
+      }
+    );
     if (!client) {
       return res.status(404).json({ err: "Client not found" });
     }
-    res.status(200).json({ message: "Client deleted" });
-  };
+    res.status(200).json(client);
+  } catch (err) {
+    res.status(400).json({ err: err });
+  }
+};
+
+//delete selected client
+const deleteClient = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ err: "Client not found" });
+  }
+  const client = await Client.findByIdAndDelete(id);
+  if (!client) {
+    return res.status(404).json({ err: "Client not found" });
+  }
+  res.status(200).json({ message: "Client deleted" });
+};
 
 module.exports = {
   createClient,
   getClients,
   getClient,
   deleteClient,
+  updateClient,
 };
