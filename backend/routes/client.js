@@ -1,16 +1,14 @@
 const express = require("express");
 const {
-   createClient,
-   getClientsClients,
-   getClients
-   } = require("../controllers/clientController.js");
+  createClient,
+  getClient,
+  getClients,
+} = require("../controllers/clientController.js");
 const clientRoute = express.Router();
 
 clientRoute.get("/client", getClients);
 
-clientRoute.get("/client:id", (req, res) => {
-  res.json({ message: "getting selected client!" });
-});
+clientRoute.get("/client/:id", getClient);
 
 clientRoute.post("/client", createClient);
 

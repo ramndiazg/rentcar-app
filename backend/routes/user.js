@@ -1,15 +1,14 @@
 const express = require("express");
 const {
-   createUser,
-   getUsers
-  } = require("../controllers/userController.js");
+  createUser,
+  getUsers,
+  getUser,
+} = require("../controllers/userController.js");
 const userRoute = express.Router();
 
 userRoute.get("/user", getUsers);
 
-userRoute.get("/user:id", (req, res) => {
-  res.json({ message: "getting selected user!" });
-});
+userRoute.get("/user/:id", getUser);
 
 userRoute.post("/user", createUser);
 

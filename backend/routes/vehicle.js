@@ -1,15 +1,14 @@
 const express = require("express");
 const {
-   createVehicle,
-   getVehicles
-   } = require("../controllers/vehicleController.js");
+  createVehicle,
+  getVehicles,
+  getVehicle,
+} = require("../controllers/vehicleController.js");
 const vehicleRoute = express.Router();
 
 vehicleRoute.get("/vehicle", getVehicles);
 
-vehicleRoute.get("/vehicle:id", (req, res) => {
-  res.json({ message: "getting selected vehicle!" });
-});
+vehicleRoute.get("/vehicle/:id", getVehicle);
 
 vehicleRoute.post("/vehicle", createVehicle);
 
