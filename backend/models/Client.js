@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const ClientSchema = new Schema(
   {
     ...PersonSchema.obj,
-    contact: { type: String, required: true },
+    contact: [{ relationship: String, name: String, phone: String }],
     address: { type: String, required: true },
   },
   { timestamps: true }
