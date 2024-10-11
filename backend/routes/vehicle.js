@@ -1,4 +1,5 @@
 const express = require("express");
+const verify = require("../auth/auth.js")
 const {
   createVehicle,
   getVehicles,
@@ -8,14 +9,14 @@ const {
 } = require("../controllers/vehicleController.js");
 const vehicleRoute = express.Router();
 
-vehicleRoute.get("/vehicle", getVehicles);
+vehicleRoute.get("/vehicle", verify.verifyToken, getVehicles);
 
-vehicleRoute.get("/vehicle/:id", getVehicle);
+vehicleRoute.get("/vehicle/:id", verify.verifyToken, getVehicle);
 
-vehicleRoute.post("/vehicle", createVehicle);
+vehicleRoute.post("/vehicle", verify.verifyToken, createVehicle);
 
-vehicleRoute.delete("/vehicle/:id", deleteVehicle);
+vehicleRoute.delete("/vehicle/:id", verify.verifyToken, deleteVehicle);
 
-vehicleRoute.patch("/vehicle/:id", updateVehicle);
+vehicleRoute.patch("/vehicle/:id", verify.verifyToken, updateVehicle);
 
 module.exports = vehicleRoute;

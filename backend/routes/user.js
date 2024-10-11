@@ -1,4 +1,5 @@
 const express = require("express");
+const verify = require("../auth/auth.js")
 const {
   createUser,
   getUsers,
@@ -8,14 +9,14 @@ const {
 } = require("../controllers/userController.js");
 const userRoute = express.Router();
 
-userRoute.get("/user", getUsers);
+userRoute.get("/user", verify.verifyToken, getUsers);
 
-userRoute.get("/user/:id", getUser);
+userRoute.get("/user/:id", verify.verifyToken, getUser);
 
 userRoute.post("/user", createUser);
 
-userRoute.delete("/user/:id", deleteUser);
+userRoute.delete("/user/:id", verify.verifyToken, deleteUser);
 
-userRoute.patch("/user/:id", updateUser);
+userRoute.patch("/user/:id", verify.verifyToken, updateUser);
 
 module.exports = userRoute;

@@ -1,4 +1,5 @@
 const express = require("express");
+const verify = require("../auth/auth.js")
 const {
   createClient,
   getClient,
@@ -8,14 +9,14 @@ const {
 } = require("../controllers/clientController.js");
 const clientRoute = express.Router();
 
-clientRoute.get("/client", getClients);
+clientRoute.get("/client", verify.verifyToken, getClients);
 
-clientRoute.get("/client/:id", getClient);
+clientRoute.get("/client/:id", verify.verifyToken, getClient);
 
-clientRoute.post("/client", createClient);
+clientRoute.post("/client", verify.verifyToken, createClient);
 
-clientRoute.delete("/client/:id", deleteClient);
+clientRoute.delete("/client/:id", verify.verifyToken, deleteClient);
 
-clientRoute.patch("/client/:id", updateClient);
+clientRoute.patch("/client/:id", verify.verifyToken, updateClient);
 
 module.exports = clientRoute;

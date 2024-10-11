@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 function verifyToken(req, res, next) {
   const header = req.header("Authorization") || "";
@@ -7,7 +8,7 @@ function verifyToken(req, res, next) {
     return res.status(401).json({ message: "Token not provied" });
   }
   try {
-    const payload = jwt.verify(token, secretKey);
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
     req.email = payload.email;
     next();
   } catch (error) {
