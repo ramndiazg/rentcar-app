@@ -5,6 +5,7 @@ const { Schema } = mongoose;
 const UserSchema = new Schema(
   {
     ...PersonSchema.obj,
+    password: { type: String, required: true },
     role: {
       type: String,
       enum: ["user", "admin"],

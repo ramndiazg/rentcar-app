@@ -20,7 +20,7 @@ const getClient = async (req, res) => {
 };
 //create a new client
 const createClient = async (req, res) => {
-  const { firstName, lastName, phone, email, password, address, contact } =
+  const { firstName, lastName, phone, email, address, contact } =
     req.body;
   //adding new client to db.
   try {
@@ -29,7 +29,6 @@ const createClient = async (req, res) => {
       lastName,
       phone,
       email,
-      password,
       address,
       contact,
     });
