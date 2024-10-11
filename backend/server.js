@@ -5,6 +5,7 @@ const appRoutes = require("./routes/routes.js");
 const userRoute = require("./routes/user.js");
 const clientRoute = require("./routes/client.js");
 const vehicleRoute = require("./routes/vehicle.js");
+const authRoute = require("./routes/auth.js");
 const app = express();
 const mongoose = require("mongoose");
 
@@ -20,6 +21,7 @@ app.use("/api", appRoutes);
 app.use("/api", userRoute);
 app.use("/api", clientRoute);
 app.use("/api", vehicleRoute);
+app.use("/api", authRoute);
 
 //connect
 mongoose
