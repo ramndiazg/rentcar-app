@@ -1,5 +1,6 @@
 const User = require("../models/User.js");
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 
 //get all users
 const getUsers = async (req, res) => {
@@ -23,12 +24,14 @@ const createUser = async (req, res) => {
   const { firstName, lastName, phone, email, password, role } = req.body;
   //adding new user to db.
   try {
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
     const user = await User.create({
       firstName,
       lastName,
       phone,
       email,
-      password,
+      password: hashedPassword,
       role,
     });
     res.status(200).json(user);
@@ -44,6 +47,10 @@ const updateUser = async (req, res) => {
     return res.status(404).json({ err: "User not found" });
   }
   try {
+    if (req.body.password) {
+      const salt = await bcrypt.genSalt(10);
+      req.body.password = await bcrypt.hash(req.body.password, salt);
+    }
     const user = await User.findOneAndUpdate(
       { _id: id },
       {

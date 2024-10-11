@@ -1,22 +1,31 @@
-const Person = require("../models/Person.js");
+const User = require("../models/User.js");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 require("dotenv").config();
 
 //login
 const login = async (req, res) => {
   try {
-    const email = req.body.email;
-    const password = req.body.password;
+    const { email, password } = req.body;
     if (!email || !password) {
       return res
         .status(400)
         .json({ message: "email and password are required" });
     }
-    if (email === "admin" && password === "123") {
-      const token = jwt.sign({ email }, process.env.JWT_SECRET, {
-        expiresIn: "1h",
-      });
+    const user = await User.findOne({ email: email });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (isPasswordValid) {
+      const token = jwt.sign(
+        { email: user.email, id: user._id },
+        process.env.JWT_SECRET,
+        {
+          expiresIn: "8h",
+        }
+      );
       return res.status(200).json({ token });
     } else {
       return res.status(401).json({ message: "Authentication failed" });
