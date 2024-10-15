@@ -10,6 +10,7 @@ const VehicleSchema = new Schema(
     chassis: { type: String, required: true },
     register: { type: String, required: true },
     mileage: { type: Number, required: true },
+    costPerDay: { type: Number, required: true},
     imageUrl: { type: String },
     status: {
       type: String,

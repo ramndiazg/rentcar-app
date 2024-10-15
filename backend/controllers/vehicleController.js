@@ -6,6 +6,13 @@ const getVehicles = async (req, res) => {
   const vehicles = await Vehicle.find({}).sort({ createdAt: -1 });
   res.status(200).json(vehicles);
 };
+
+//get all availables vehicles
+const getVehiclesAvailable = async (req, res) => {
+  const availablesVehicles = await Vehicle.find({status: "available"}).sort({ createdAt: -1 });
+  res.status(200).json(availablesVehicles);
+};
+
 //get selected vehicle
 const getVehicle = async (req, res) => {
   const { id } = req.params;
@@ -93,4 +100,5 @@ module.exports = {
   getVehicle,
   deleteVehicle,
   updateVehicle,
+  getVehiclesAvailable,
 };

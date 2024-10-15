@@ -3,6 +3,7 @@ const verify = require("../auth/auth.js")
 const {
   createVehicle,
   getVehicles,
+  getVehiclesAvailable,
   getVehicle,
   deleteVehicle,
   updateVehicle,
@@ -12,6 +13,8 @@ const vehicleRoute = express.Router();
 vehicleRoute.get("/vehicle", verify.verifyToken, getVehicles);
 
 vehicleRoute.get("/vehicle/:id", verify.verifyToken, getVehicle);
+
+vehicleRoute.get("/vehiclesavailables", verify.verifyToken, getVehiclesAvailable);
 
 vehicleRoute.post("/vehicle", verify.verifyToken, createVehicle);
 
