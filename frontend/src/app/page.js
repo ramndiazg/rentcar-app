@@ -17,7 +17,7 @@ export default function Home() {
         onClick={goToLogin}
         style={{ padding: "10px 20px", fontSize: "16px", cursor: "pointer" }}
       >
-        Ir a Login
+        go to login page
       </button>
     </div>
   );
