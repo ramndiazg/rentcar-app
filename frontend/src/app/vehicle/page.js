@@ -3,17 +3,11 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function Dashboard() {
+export default function Vehicle() {
   const [data, setData] = useState(null);
   const router = useRouter();
-  const goToVehicle = () => {
-    router.push("/vehicle");
-  };
-  const goToClient = () => {
-    router.push("/client");
-  };
-  const goToUser = () => {
-    router.push("/user");
+  const goToDashboard = () => {
+    router.push("/dashboard");
   };
 
   useEffect(() => {
@@ -26,7 +20,7 @@ export default function Dashboard() {
         return;
       }
 
-      const res = await fetch("http://localhost:3546/dashboard", {
+      const res = await fetch("http://localhost:3546/vehicle", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -42,29 +36,15 @@ export default function Dashboard() {
 
   return (
     <div>
-      <h1>Dashboard page</h1>
+      <h1>Vehicle page</h1>
       <p>welcome </p>
       <pre>{JSON.stringify(data, null, 2)}</pre>
-      <p>click for go to vehicle</p>
+      <p>click for go to dashboard</p>
       <button
-        onClick={goToVehicle}
+        onClick={goToDashboard}
         style={{ padding: "10px 20px", fontSize: "16px", cursor: "pointer" }}
       >
-        go to vehicle page
-      </button>
-      <p>click for go to client</p>
-      <button
-        onClick={goToClient}
-        style={{ padding: "10px 20px", fontSize: "16px", cursor: "pointer" }}
-      >
-        go to client page
-      </button>
-      <p>click for go to user</p>
-      <button
-        onClick={goToUser}
-        style={{ padding: "10px 20px", fontSize: "16px", cursor: "pointer" }}
-      >
-        go to user page
+        go to dashboard page
       </button>
     </div>
   );
