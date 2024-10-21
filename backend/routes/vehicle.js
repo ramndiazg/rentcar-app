@@ -14,7 +14,7 @@ vehicleRoute.get("/vehicle", verify.verifyToken, getVehicles);
 
 vehicleRoute.get("/vehicle/:id", verify.verifyToken, getVehicle);
 
-vehicleRoute.get("/vehiclesavailables", verify.verifyToken, getVehiclesAvailable);
+vehicleRoute.get("/vehiclesavailables", getVehiclesAvailable);
 
 vehicleRoute.post("/vehicle", verify.verifyToken, createVehicle);
 
