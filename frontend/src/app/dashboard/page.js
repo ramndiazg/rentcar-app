@@ -19,14 +19,13 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchData = async () => {
       const token = localStorage.getItem("token");
-      //const name = localStorage.getItem("name");
 
       if (!token) {
         router.push("/login");
         return;
       }
 
-      const res = await fetch("http://localhost:3546/dashboard", {
+      const res = await fetch("http://localhost:3546/api/dashboard", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,

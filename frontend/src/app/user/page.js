@@ -20,7 +20,7 @@ export default function User() {
         return;
       }
 
-      const res = await fetch("http://localhost:3546/user", {
+      const res = await fetch("http://localhost:3546/api/user", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
