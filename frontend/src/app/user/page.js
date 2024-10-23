@@ -1,5 +1,6 @@
 "use client";
 
+import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -16,6 +17,15 @@ export default function User() {
       //const name = localStorage.getItem("name");
 
       if (!token) {
+        router.push("/login");
+        return;
+      }
+
+      const decodedToken = jwtDecode(token);
+      const currentTime = Date.now() / 1000;
+
+      if (decodedToken.exp < currentTime) {
+        localStorage.removeItem("token");
         router.push("/login");
         return;
       }
