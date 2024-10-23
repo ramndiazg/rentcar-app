@@ -3,6 +3,7 @@
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import ClientDetails from "../components/ClientDetails";
 
 export default function Client() {
   const [data, setData] = useState(null);
@@ -47,8 +48,7 @@ export default function Client() {
   return (
     <div>
       <h1>Client page</h1>
-      <p>welcome </p>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      {data && data.map((client) => <ClientDetails key={client._id} client={client}/>)}
       <p>click for go to dashboard</p>
       <button
         onClick={goToDashboard}

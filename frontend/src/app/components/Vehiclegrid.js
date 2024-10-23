@@ -20,7 +20,6 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function Vehiclegrid() {
   const [data, setData] = useState(null);
-  const router = useRouter();
   useEffect(() => {
     const fetchData = async () => {
       try {

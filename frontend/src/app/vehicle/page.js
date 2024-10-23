@@ -3,7 +3,7 @@
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Vehiclegrid from "../components/Vehiclegrid"
+import VehicleDetails from "../components/VehicleDetails";
 
 export default function Vehicle() {
   const [data, setData] = useState(null);
@@ -45,11 +45,11 @@ export default function Vehicle() {
   }, [router]);
 
   return (
-    <div>
-      <h1>Vehicle page</h1>
-      <p>welcome </p>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-      <Vehiclegrid />
+    <div className="vehicle">
+      <div className="">
+        <h1>Vehicle page</h1>
+        {data && data.map((vehicle) => <VehicleDetails key={vehicle._id} vehicle={vehicle}/>)}
+      </div>
       <p>click for go to dashboard</p>
       <button
         onClick={goToDashboard}
