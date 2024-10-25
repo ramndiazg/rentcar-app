@@ -15,6 +15,7 @@ const VehicleForm = () => {
   const [mileage, setMileage] = useState("");
   const [status, setStatus] = useState("");
   const [costPerDay, setCostPerDay] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [lastServiceDate, setLastServiceDate] = useState("");
 
   useEffect(() => {
@@ -55,6 +56,7 @@ const VehicleForm = () => {
       status,
       costPerDay,
       lastServiceDate,
+      imageUrl,
     };
 
     const response = await fetch("http://localhost:3546/api/vehicle", {
@@ -80,6 +82,7 @@ const VehicleForm = () => {
       setStatus("");
       setCostPerDay("");
       setLastServiceDate("");
+      setImageUrl
       setError(null);
       console.log("New vehicle added", json);
     }
@@ -147,6 +150,12 @@ const VehicleForm = () => {
         type="date"
         onChange={(e) => setLastServiceDate(e.target.value)}
         value={lastServiceDate}
+      />
+      <label>Image: </label>
+      <input
+        type="text"
+        onChange={(e) => setImageUrl(e.target.value)}
+        value={imageUrl}
       />
       <button type="submit">Add Vehicle</button>
 
