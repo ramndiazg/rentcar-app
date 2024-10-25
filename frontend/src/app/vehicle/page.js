@@ -4,6 +4,7 @@ import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import VehicleDetails from "../components/VehicleDetails";
+import VehicleForm from "../components/VehicleForm";
 
 export default function Vehicle() {
   const [data, setData] = useState(null);
@@ -48,6 +49,7 @@ export default function Vehicle() {
     <div className="vehicle">
       <div className="">
         <h1>Vehicle page</h1>
+        <VehicleForm />
         {data && data.map((vehicle) => <VehicleDetails key={vehicle._id} vehicle={vehicle}/>)}
       </div>
       <p>click for go to dashboard</p>

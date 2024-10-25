@@ -37,6 +37,7 @@ const createVehicle = async (req, res) => {
     mileage,
     imageUrl,
     status,
+    costPerDay,
     comments,
   } = req.body;
   //adding new vehicle to db.
@@ -51,6 +52,7 @@ const createVehicle = async (req, res) => {
       mileage,
       imageUrl,
       status,
+      costPerDay,
       comments,
     });
     res.status(200).json(vehicle);

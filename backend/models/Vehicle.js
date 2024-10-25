@@ -20,9 +20,9 @@ const VehicleSchema = new Schema(
       required: true,
     },
     comments: [{ body: String, date: Date }],
-    lastServiceDate: Date,
+    lastServiceDate: {type: Date},
   },
-  { Timestamp: true }
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("Vehicle", VehicleSchema);
