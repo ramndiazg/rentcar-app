@@ -13,7 +13,7 @@ userRoute.get("/user", verify.verifyToken, getUsers);
 
 userRoute.get("/user/:id", verify.verifyToken, getUser);
 
-userRoute.post("/user", createUser);
+userRoute.post("/user", verify.verifyToken, createUser);
 
 userRoute.delete("/user/:id", verify.verifyToken, deleteUser);
 

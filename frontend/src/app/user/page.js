@@ -4,6 +4,7 @@ import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import UserDetails from "../components/UserDetails";
+import UserForm from "../components/UserForm";
 
 export default function User() {
   const [data, setData] = useState(null);
@@ -48,6 +49,7 @@ export default function User() {
   return (
     <div>
       <h1>User page</h1>
+      <UserForm />
       {data && data.map((user) => <UserDetails key={user._id} user={user}/>)}
       <p>click for go to dashboard</p>
       <button
