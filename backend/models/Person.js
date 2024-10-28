@@ -33,7 +33,7 @@ const PersonSchema = new Schema(
       ],
     },
   },
-  { timestamps: true, required: true }
+  { timestamps: true}
 );
 
 module.exports = PersonSchema;

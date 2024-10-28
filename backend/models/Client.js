@@ -16,6 +16,20 @@ const ClientSchema = new Schema(
       required: [true, "Phone number is required"],
     } }],
     address: { type: String, required: true },
+    preferredPaymentMethod: {
+      type: String,
+      enum: ["cash", "credit card", "debit card"],
+      default: "cash",
+      message: "{VALUE} is not supported",
+      required: true,
+    },
+    membershipStatus: {
+      type: String,
+      enum: ["bloqued", "regular", "premium"],
+      default: "regular",
+      message: "{VALUE} is not supported",
+      required: true,
+    },
   },
   { timestamps: true }
 );

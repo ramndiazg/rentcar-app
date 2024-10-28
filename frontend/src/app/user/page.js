@@ -3,7 +3,7 @@
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import UserDetails from "../components/Userdetails";
+import UserDetails from "../components/UserDetails";
 
 export default function User() {
   const [data, setData] = useState(null);
@@ -34,6 +34,7 @@ export default function User() {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
       });
 

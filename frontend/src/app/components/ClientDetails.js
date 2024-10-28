@@ -6,6 +6,8 @@ const ClientDetails = ({client}) => {
             <p><strong>Phone: </strong>{client.phone}</p>
             <p><strong>Email: </strong>{client.email}</p>
             <p><strong>Address: </strong>{client.address}</p>
+            <p><strong>Membership Status: </strong>{client.membershipStatus}</p>
+            <p><strong>Preferred Payment Method: </strong>{client.preferredPaymentMethod}</p>
         </div>
 
     )

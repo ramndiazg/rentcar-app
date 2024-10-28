@@ -35,6 +35,7 @@ export default function Vehicle() {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
       });
 

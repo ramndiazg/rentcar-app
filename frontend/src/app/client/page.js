@@ -15,7 +15,6 @@ export default function Client() {
   useEffect(() => {
     const fetchData = async () => {
       const token = localStorage.getItem("token");
-      //const name = localStorage.getItem("name");
 
       if (!token) {
         router.push("/login");
@@ -35,6 +34,7 @@ export default function Client() {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
       });
 
