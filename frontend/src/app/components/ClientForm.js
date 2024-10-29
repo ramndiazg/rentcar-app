@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useRouter } from "next/navigation";
-import * as React from 'react';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+import * as React from "react";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
+import Button from "@mui/material/Button";
+import { FormControl, FormLabel } from "@mui/material";
 
 const ClientForm = () => {
   const router = useRouter();
@@ -83,59 +85,73 @@ const ClientForm = () => {
 
   return (
     <form className="createClient" onSubmit={handleSubmit}>
-      <p>Add New Client</p>
-      <label>First Name: </label>
-      <input
-        type="text"
-        onChange={(e) => setFirstName(e.target.value)}
-        value={firstName}
-      />
-      <label>Last Name: </label>
-      <input
-        type="text"
-        onChange={(e) => setLastName(e.target.value)}
-        value={lastName}
-      />
-      <label>Phone: </label>
-      <input
-        type="text"
-        onChange={(e) => setPhone(e.target.value)}
-        value={phone}
-      />
-      <label>Email: </label>
-      <input
-        type="text"
-        onChange={(e) => setEmail(e.target.value)}
-        value={email}
-      />
-      <label>Address: </label>
-      <input
-        type="text"
-        onChange={(e) => setAddress(e.target.value)}
-        value={address}
-      />
-      <label>MembershipStatus: </label>
-      <Autocomplete
-        disablePortal
-        options={optionsStatus}
-        value={membershipStatus}
-        onChange={(e, newValue) => setMembershipStatus(newValue)}
-        sx={{ width: 200, height: 50, backgroundColor: 'gray'}}
-        renderInput={(params) => <TextField {...params} label="Status" />}
-      />
-      <label>PreferredPaymentMethod: </label>
-      <Autocomplete
-        disablePortal
-        options={optionsPayment}
-        value={preferredPaymentMethod}
-        onChange={(e, newValue) => setPreferredPaymentMethod(newValue)}
-        sx={{ width: 200, height: 50,backgroundColor: 'gray'}}
-        renderInput={(params) => <TextField {...params} label="Payment" />}
-      />
+      <FormControl>
+        <FormLabel>Add New Client</FormLabel>
+        <TextField
+          label="First Name"
+          type="text"
+          variant="outlined"
+          onChange={(e) => setFirstName(e.target.value)}
+          value={firstName}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+        />
+        <TextField
+          label="Last Name"
+          type="text"
+          variant="outlined"
+          onChange={(e) => setLastName(e.target.value)}
+          value={lastName}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+        />
+        <TextField
+          label="Phone"
+          type="text"
+          variant="outlined"
+          onChange={(e) => setPhone(e.target.value)}
+          value={phone}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+        />
+        <TextField
+          label="Email"
+          type="text"
+          variant="outlined"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+        />
+        <TextField
+          label="Address"
+          type="text"
+          variant="outlined"
+          onChange={(e) => setAddress(e.target.value)}
+          value={address}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+        />
+        <Autocomplete
+          disablePortal
+          options={optionsStatus}
+          value={membershipStatus}
+          onChange={(e, newValue) => setMembershipStatus(newValue)}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+          renderInput={(params) => (
+            <TextField {...params} label="MembershipStatus" />
+          )}
+        />
+        <Autocomplete
+          disablePortal
+          options={optionsPayment}
+          value={preferredPaymentMethod}
+          onChange={(e, newValue) => setPreferredPaymentMethod(newValue)}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+          renderInput={(params) => (
+            <TextField {...params} label="PreferredPaymentMethod" />
+          )}
+        />
 
-      <button type="submit">Add Client</button>
+        <Button type="submit" sx={{ width: 500, height: 50, backgroundColor: "blue", color: "red"}}>Add Client</Button>
 
-      {error && <div className="error">{error}</div>}
+        {error && <div className="error">{error}</div>}
+      </FormControl>
     </form>
   );
 };
