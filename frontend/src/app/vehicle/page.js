@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import VehicleDetails from "../components/VehicleDetails";
 import VehicleForm from "../components/VehicleForm";
+import Appbar from "../components/Appbar";
 
 export default function Vehicle() {
   const [data, setData] = useState(null);
@@ -48,7 +49,8 @@ export default function Vehicle() {
 
   return (
     <div className="vehicle">
-      <div className="">
+      <Appbar />
+      <div className="" style={{ textAlign: "center", padding: "50px" }}>
         <h1>Vehicle page</h1>
         <VehicleForm />
         {data &&

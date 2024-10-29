@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import ClientDetails from "../components/ClientDetails";
 import ClientForm from "../components/ClientForm";
+import Appbar from "../components/Appbar";
 
 export default function Client() {
   const [data, setData] = useState(null);
@@ -48,19 +49,22 @@ export default function Client() {
 
   return (
     <div>
-      <h1>Client page</h1>
-      <ClientForm />
-      {data &&
-        data.map((client) => (
-          <ClientDetails key={client._id} client={client} />
-        ))}
-      <p>click for go to dashboard</p>
-      <button
-        onClick={goToDashboard}
-        style={{ padding: "10px 20px", fontSize: "16px", cursor: "pointer" }}
-      >
-        go to dashboard page
-      </button>
+      <Appbar />
+      <div className="" style={{ textAlign: "center", padding: "50px" }}>
+        <h1>Client page</h1>
+        <ClientForm />
+        {data &&
+          data.map((client) => (
+            <ClientDetails key={client._id} client={client} />
+          ))}
+        <p>click for go to dashboard</p>
+        <button
+          onClick={goToDashboard}
+          style={{ padding: "10px 20px", fontSize: "16px", cursor: "pointer" }}
+        >
+          go to dashboard page
+        </button>
+      </div>
     </div>
   );
 }

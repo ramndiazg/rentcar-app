@@ -3,6 +3,7 @@
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Appbar from "../components/Appbar";
 
 export default function Dashboard() {
   const [data, setData] = useState(null);
@@ -52,6 +53,7 @@ export default function Dashboard() {
 
   return (
     <div>
+      <Appbar />
       <h1>Dashboard page</h1>
       <p>welcome </p>
       <pre>{JSON.stringify(data, null, 2)}</pre>
