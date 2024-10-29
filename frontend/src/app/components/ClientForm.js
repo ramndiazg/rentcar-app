@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useRouter } from "next/navigation";
+import * as React from 'react';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 
 const ClientForm = () => {
   const router = useRouter();
@@ -13,6 +16,8 @@ const ClientForm = () => {
   const [address, setAddress] = useState("");
   const [membershipStatus, setMembershipStatus] = useState("");
   const [preferredPaymentMethod, setPreferredPaymentMethod] = useState("");
+  const optionsStatus = ["blocked", "regular", "premium"];
+  const optionsPayment = ["cash", "credit card", "debit card"];
 
   useEffect(() => {
     const tokenStored = localStorage.getItem("token");
@@ -110,16 +115,22 @@ const ClientForm = () => {
         value={address}
       />
       <label>MembershipStatus: </label>
-      <input
-        type="text"
-        onChange={(e) => setMembershipStatus(e.target.value)}
+      <Autocomplete
+        disablePortal
+        options={optionsStatus}
         value={membershipStatus}
+        onChange={(e, newValue) => setMembershipStatus(newValue)}
+        sx={{ width: 200, height: 50, backgroundColor: 'gray'}}
+        renderInput={(params) => <TextField {...params} label="Status" />}
       />
       <label>PreferredPaymentMethod: </label>
-      <input
-        type="text"
-        onChange={(e) => setPreferredPaymentMethod(e.target.value)}
+      <Autocomplete
+        disablePortal
+        options={optionsPayment}
         value={preferredPaymentMethod}
+        onChange={(e, newValue) => setPreferredPaymentMethod(newValue)}
+        sx={{ width: 200, height: 50,backgroundColor: 'gray'}}
+        renderInput={(params) => <TextField {...params} label="Payment" />}
       />
 
       <button type="submit">Add Client</button>

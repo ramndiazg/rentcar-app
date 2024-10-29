@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useRouter } from "next/navigation";
+import * as React from 'react';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 
 const UserForm = () => {
   const router = useRouter();
@@ -12,6 +15,7 @@ const UserForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
+  const optionsRole = ["user", "admin"];
 
   useEffect(() => {
     const tokenStored = localStorage.getItem("token");
@@ -107,10 +111,13 @@ const UserForm = () => {
         value={password}
       />
       <label>Role: </label>
-      <input
-        type="text"
-        onChange={(e) => setRole(e.target.value)}
+      <Autocomplete
+        disablePortal
+        options={optionsRole}
         value={role}
+        onChange={(e, newValue) => setRole(newValue)}
+        sx={{ width: 200, height: 50, backgroundColor: 'gray'}}
+        renderInput={(params) => <TextField {...params} label="Role" />}
       />
       <button type="submit">Add User</button>
 

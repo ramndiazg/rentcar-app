@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useRouter } from "next/navigation";
+import * as React from 'react';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 
 const VehicleForm = () => {
   const router = useRouter();
@@ -17,6 +20,7 @@ const VehicleForm = () => {
   const [costPerDay, setCostPerDay] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [lastServiceDate, setLastServiceDate] = useState("");
+  const optionsStatus = ["available", "in use", "maintenance"];
 
   useEffect(() => {
     const tokenStored = localStorage.getItem("token");
@@ -128,10 +132,13 @@ const VehicleForm = () => {
         value={register}
       />
       <label>Status: </label>
-      <input
-        type="text"
-        onChange={(e) => setStatus(e.target.value)}
+      <Autocomplete
+        disablePortal
+        options={optionsStatus}
         value={status}
+        onChange={(e, newValue) => setStatus(newValue)}
+        sx={{ width: 200, height: 50, backgroundColor: 'gray'}}
+        renderInput={(params) => <TextField {...params} label="Status" />}
       />
       <label>Mileage: </label>
       <input
