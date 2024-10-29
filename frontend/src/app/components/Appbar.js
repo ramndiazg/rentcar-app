@@ -6,10 +6,15 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Appbar() {
-  const token = localStorage.getItem("token");
+  const [token, setToken] = React.useState(null);
   const router = useRouter();
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    setToken(storedToken);
+  }, []);
   const goToLogin = () => {
     router.push("/login");
   };
