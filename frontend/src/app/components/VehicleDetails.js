@@ -1,50 +1,35 @@
+import * as React from "react";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+
 const VehicleDetails = ({ vehicle }) => {
   return (
-    <div className="vehicle-details">
-      <p>
-        <strong>Make: </strong>
-        {vehicle.make}
-      </p>
-      <p>
-        <strong>Model: </strong>
-        {vehicle.model}
-      </p>
-      <p>
-        <strong>Color: </strong>
-        {vehicle.color}
-      </p>
-      <p>
-        <strong>Year: </strong>
-        {vehicle.year}
-      </p>
-      <p>
-        <strong>Chassis: </strong>
-        {vehicle.chassis}
-      </p>
-      <p>
-        <strong>Register: </strong>
-        {vehicle.register}
-      </p>
-      <p>
-        <strong>Mileage: </strong>
-        {vehicle.mileage}
-      </p>
-      <p>
-        <strong>Status: </strong>
-        {vehicle.status}
-      </p>
-      <p>
-        <strong>Cost per day: </strong>
-        {vehicle.costPerDay}
-      </p>
-      <p>
-        <strong>Last Service Date: </strong>
-        {vehicle.lastServiceDate}
-      </p>
-      <p>
-        <strong>Image: </strong>
-        {vehicle.imageUrl}
-      </p>
+    <div className="" style={{ alignItems: "center"}}>
+      <Card sx={{ maxWidth: 175, alignContent: "center" }}>
+        <CardContent>
+          <Typography variant="h5" component="div">
+            {vehicle.make}
+          </Typography>
+          <Typography variant="h5" component="div">
+            {vehicle.model}
+          </Typography>
+          <Typography sx={{ color: "text.secondary", mb: 1.5 }}>
+            {vehicle.color}
+          </Typography>
+          <Typography sx={{ color: "text.secondary", mb: 1.5 }}>
+            {vehicle.year}
+          </Typography>
+          <Typography sx={{ color: "text.secondary", mb: 1.5 }}>
+            {vehicle.status}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small">Rent</Button>
+        </CardActions>
+      </Card>
     </div>
   );
 };
