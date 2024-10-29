@@ -30,7 +30,6 @@ const createClient = async (req, res) => {
       phone,
       email,
       address,
-      contact,
       preferredPaymentMethod,
       membershipStatus,
     });
