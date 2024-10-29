@@ -57,13 +57,6 @@ export default function Client() {
           data.map((client) => (
             <ClientDetails key={client._id} client={client} />
           ))}
-        <p>click for go to dashboard</p>
-        <button
-          onClick={goToDashboard}
-          style={{ padding: "10px 20px", fontSize: "16px", cursor: "pointer" }}
-        >
-          go to dashboard page
-        </button>
       </div>
     </div>
   );

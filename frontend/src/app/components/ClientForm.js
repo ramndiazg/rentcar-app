@@ -17,7 +17,7 @@ const ClientForm = () => {
   useEffect(() => {
     const tokenStored = localStorage.getItem("token");
     if (!tokenStored) {
-      router.push("/login");
+      router.push("/");
       return;
     }
 

@@ -19,7 +19,7 @@ export default function User() {
       const token = localStorage.getItem("token");
 
       if (!token) {
-        router.push("/login");
+        router.push("/");
         return;
       }
 
@@ -54,13 +54,6 @@ export default function User() {
         <h1>User page</h1>
         <UserForm />
         {data && data.map((user) => <UserDetails key={user._id} user={user} />)}
-        <p>click for go to dashboard</p>
-        <button
-          onClick={goToDashboard}
-          style={{ padding: "10px 20px", fontSize: "16px", cursor: "pointer" }}
-        >
-          go to dashboard page
-        </button>
       </div>
     </div>
   );

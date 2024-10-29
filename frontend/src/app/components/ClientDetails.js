@@ -1,16 +1,45 @@
-const ClientDetails = ({client}) => {
-    return (
-        <div className="client-details">
-            <p><strong>FirstName: </strong>{client.firstName}</p>
-            <p><strong>LastName: </strong>{client.lastName}</p>
-            <p><strong>Phone: </strong>{client.phone}</p>
-            <p><strong>Email: </strong>{client.email}</p>
-            <p><strong>Address: </strong>{client.address}</p>
-            <p><strong>Membership Status: </strong>{client.membershipStatus}</p>
-            <p><strong>Preferred Payment Method: </strong>{client.preferredPaymentMethod}</p>
-        </div>
+import * as React from "react";
+import Card from "@mui/material/Card";
+// import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+// import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
-    )
-}
+const ClientDetails = ({ client }) => {
+  return (
+    <div className="client-details">
+      <div className="" style={{ alignItems: "center" }}>
+        <Card sx={{ maxWidth: 175, alignContent: "center" }}>
+          <CardContent>
+            <Typography variant="h5" component="div">
+              {client.firstName}
+            </Typography>
+            <Typography variant="h5" component="div">
+              {client.lastName}
+            </Typography>
+            <Typography sx={{ color: "text.secondary", mb: 1.5 }}>
+              {client.phone}
+            </Typography>
+            <Typography sx={{ color: "text.secondary", mb: 1.5 }}>
+              {client.email}
+            </Typography>
+            <Typography sx={{ color: "text.secondary", mb: 1.5 }}>
+              {client.address}
+            </Typography>
+            <Typography sx={{ color: "text.secondary", mb: 1.5 }}>
+              {client.membershipStatus}
+            </Typography>
+            <Typography sx={{ color: "text.secondary", mb: 1.5 }}>
+              {client.preferredPaymentMethod}
+            </Typography>
+          </CardContent>
+          {/* <CardActions>
+            <Button size="small">Delete</Button>
+          </CardActions> */}
+        </Card>
+      </div>
+    </div>
+  );
+};
 
-export default ClientDetails
+export default ClientDetails;
