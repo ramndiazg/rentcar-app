@@ -51,7 +51,10 @@ export default function Vehicle() {
       <div className="">
         <h1>Vehicle page</h1>
         <VehicleForm />
-        {data && data.map((vehicle) => <VehicleDetails key={vehicle._id} vehicle={vehicle}/>)}
+        {data &&
+          data.map((vehicle) => (
+            <VehicleDetails key={vehicle._id} vehicle={vehicle} />
+          ))}
       </div>
       <p>click for go to dashboard</p>
       <button

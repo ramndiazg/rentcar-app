@@ -82,7 +82,7 @@ const VehicleForm = () => {
       setStatus("");
       setCostPerDay("");
       setLastServiceDate("");
-      setImageUrl
+      setImageUrl;
       setError(null);
       console.log("New vehicle added", json);
     }

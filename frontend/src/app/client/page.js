@@ -50,7 +50,10 @@ export default function Client() {
     <div>
       <h1>Client page</h1>
       <ClientForm />
-      {data && data.map((client) => <ClientDetails key={client._id} client={client}/>)}
+      {data &&
+        data.map((client) => (
+          <ClientDetails key={client._id} client={client} />
+        ))}
       <p>click for go to dashboard</p>
       <button
         onClick={goToDashboard}

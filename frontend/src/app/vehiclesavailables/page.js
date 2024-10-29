@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Vehiclesgrid from "../components/Vehiclesgrid"
+import Vehiclesgrid from "../components/Vehiclesgrid";
 
 export default function VehiclesAvailables() {
   const router = useRouter();
@@ -14,7 +14,7 @@ export default function VehiclesAvailables() {
       <h1>VehiclesAvailables page</h1>
       <p>welcome </p>
       <div className="vehicles">
-          <Vehiclesgrid />
+        <Vehiclesgrid />
       </div>
       <p>click for go to home</p>
       <button
