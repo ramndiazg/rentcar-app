@@ -51,7 +51,6 @@ export default function Vehicle() {
     <div className="vehicle">
       <Appbar />
       <div className="" style={{ textAlign: "center", padding: "50px" }}>
-        <h1>Vehicle page</h1>
         <VehicleForm />
         {data &&
           data.map((vehicle) => (

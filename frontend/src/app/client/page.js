@@ -51,7 +51,6 @@ export default function Client() {
     <div>
       <Appbar />
       <div className="" style={{ textAlign: "center", padding: "50px" }}>
-        <h1>Client page</h1>
         <ClientForm />
         {data &&
           data.map((client) => (

@@ -51,7 +51,6 @@ export default function User() {
     <div>
       <Appbar />
       <div className="" style={{ textAlign: "center", padding: "50px" }}>
-        <h1>User page</h1>
         <UserForm />
         {data && data.map((user) => <UserDetails key={user._id} user={user} />)}
       </div>

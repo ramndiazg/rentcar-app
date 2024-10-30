@@ -6,6 +6,47 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import Button from "@mui/material/Button";
 import { FormControl, FormLabel } from "@mui/material";
+import { styled } from "@mui/system";
+
+const StyledContainer = styled("div")({
+  textAlign: "center",
+  padding: "50px",
+});
+
+const StyledFormControl = styled(FormControl)({
+  alignItems: "center",
+});
+
+const StyledFormLabel = styled(FormLabel)({
+  width: 500,
+  height: 50,
+  color: "white",
+});
+
+const StyledTextField = styled(TextField)({
+  width: 500,
+  height: 50,
+  backgroundColor: "#bbdefb",
+  borderRadius: 3,
+  margin: "4px 8px",
+});
+
+const StyledAutoComplete = styled(Autocomplete)({
+  width: 500,
+  height: 50,
+  backgroundColor: "#bbdefb",
+  borderRadius: 3,
+  margin: "4px 8px",
+});
+
+const StyledButton = styled(Button)({
+  width: 200,
+  height: 50,
+  backgroundColor: "#01579b",
+  color: "white",
+  borderRadius: 6,
+  margin: "4px 8px",
+});
 
 const UserForm = () => {
   const router = useRouter();
@@ -81,65 +122,58 @@ const UserForm = () => {
 
   return (
     <form className="createUser" onSubmit={handleSubmit}>
-      <FormControl>
-        <FormLabel>Add New Client</FormLabel>
-        <TextField
+      <StyledFormControl>
+        <StyledFormLabel>Add New User</StyledFormLabel>
+        <StyledTextField
           label="First Name"
           type="text"
           variant="outlined"
           onChange={(e) => setFirstName(e.target.value)}
           value={firstName}
-          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
         />
-        <TextField
+        <StyledTextField
           label="Last Name"
           type="text"
           variant="outlined"
           onChange={(e) => setLastName(e.target.value)}
           value={lastName}
-          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
         />
-        <TextField
+        <StyledTextField
           label="Phone"
           type="text"
           variant="outlined"
           onChange={(e) => setPhone(e.target.value)}
           value={phone}
-          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
         />
-        <TextField
+        <StyledTextField
           label="Email"
           type="text"
           variant="outlined"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
-          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
         />
-        <TextField
+        <StyledTextField
           label="Password"
           type="password"
           variant="outlined"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
-          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
         />
-        <Autocomplete
+        <StyledAutoComplete
           disablePortal
           options={optionsRole}
           value={role}
           onChange={(e, newValue) => setRole(newValue)}
-          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
           renderInput={(params) => <TextField {...params} label="Role" />}
         />
-        <Button
+        <StyledButton
           type="submit"
-          sx={{ width: 500, height: 50, backgroundColor: "blue", color: "red" }}
         >
           Add User
-        </Button>
+        </StyledButton>
 
         {error && <div className="error">{error}</div>}
-      </FormControl>
+      </StyledFormControl>
     </form>
   );
 };
