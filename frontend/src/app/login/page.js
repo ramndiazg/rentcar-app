@@ -6,6 +6,39 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { FormControl, FormLabel } from "@mui/material";
+import { styled } from "@mui/system";
+
+const Container = styled("div")({
+  textAlign: "center",
+  padding: "50px",
+});
+
+const StyledFormControl = styled(FormControl)({
+  alignItems: "center",
+});
+
+const StyledFormLabel = styled(FormLabel)({
+  width: 500,
+  height: 50,
+  color: "white",
+});
+
+const StyledTextField = styled(TextField)({
+  width: 500,
+  height: 50,
+  backgroundColor: "#bbdefb",
+  borderRadius: 3,
+  margin: "4px 8px",
+});
+
+const StyledButton = styled(Button)({
+  width: 200,
+  height: 50,
+  backgroundColor: "#01579b",
+  color: "white",
+  borderRadius: 6,
+  margin: "4px 8px",
+});
 
 export default function LoginPage() {
   const router = useRouter();
@@ -38,35 +71,32 @@ export default function LoginPage() {
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "50px" }}>
+    <Container>
       <form onSubmit={handleSubmit}>
-      <FormControl sx={{ alignItems: 'center' }}>
-      <FormLabel sx={{ width: 500, height: 50, color: "white" }}>Login</FormLabel>
-      <TextField
+      <StyledFormControl>
+      <StyledFormLabel>Login</StyledFormLabel>
+      <StyledTextField
           label="Email"
           type="email"
           variant="outlined"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
-          sx={{ width: 500, height: 50, backgroundColor: "#bbdefb", borderRadius: 3, marginY: 0.5, marginX: 1}}
         />
-          <TextField
+          <StyledTextField
           label="Password"
           type="password"
           variant="outlined"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
-          sx={{ width: 500, height: 50, backgroundColor: "#bbdefb", borderRadius: 3, marginY: 0.5, marginX: 1 }}
         />
-        <Button
+        <StyledButton
           type="submit"
-          sx={{ width: 200, height: 50, backgroundColor: "#01579b", color: "white", borderRadius: 6, marginY: 0.5, marginX: 1 }}
         >
           Login
-        </Button>
+        </StyledButton>
         {error && <div className="error">{error}</div>}
-        </FormControl>
+        </StyledFormControl>
       </form>
-    </div>
+    </Container>
   );
 }
