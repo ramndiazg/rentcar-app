@@ -172,14 +172,14 @@ const VehicleForm = () => {
         />
         <TextField
           label="Last service date"
-          type="text"
+          type="date"
           variant="outlined"
           onChange={(e) => setLastServiceDate(e.target.value)}
           value={lastServiceDate}
           sx={{ width: 500, height: 50, backgroundColor: "gray" }}
         />
         <TextField
-          label="Image"
+          label="Image Url"
           type="text"
           variant="outlined"
           onChange={(e) => setImageUrl(e.target.value)}

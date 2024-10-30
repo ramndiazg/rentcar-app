@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import * as React from "react";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import { FormControl, FormLabel } from "@mui/material";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -35,39 +39,33 @@ export default function LoginPage() {
 
   return (
     <div style={{ textAlign: "center", padding: "50px" }}>
-      <h1>Login</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            type="email"
-            placeholder="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <input
-            type="password"
-            placeholder="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <button
-            type="submit"
-            style={{
-              padding: "10px 20px",
-              fontSize: "16px",
-              cursor: "pointer",
-            }}
-          >
-            login
-          </button>
-        </div>
+      <FormControl sx={{ alignItems: 'center' }}>
+      <FormLabel sx={{ width: 500, height: 50, color: "white" }}>Login</FormLabel>
+      <TextField
+          label="Email"
+          type="email"
+          variant="outlined"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+          sx={{ width: 500, height: 50, backgroundColor: "#bbdefb", borderRadius: 3, marginY: 0.5, marginX: 1}}
+        />
+          <TextField
+          label="Password"
+          type="password"
+          variant="outlined"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+          sx={{ width: 500, height: 50, backgroundColor: "#bbdefb", borderRadius: 3, marginY: 0.5, marginX: 1 }}
+        />
+        <Button
+          type="submit"
+          sx={{ width: 200, height: 50, backgroundColor: "#01579b", color: "white", borderRadius: 6, marginY: 0.5, marginX: 1 }}
+        >
+          Login
+        </Button>
+        {error && <div className="error">{error}</div>}
+        </FormControl>
       </form>
     </div>
   );
