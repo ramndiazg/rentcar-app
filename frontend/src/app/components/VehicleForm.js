@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useRouter } from "next/navigation";
-import * as React from 'react';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+import * as React from "react";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
+import Button from "@mui/material/Button";
+import { FormControl, FormLabel } from "@mui/material";
 
 const VehicleForm = () => {
   const router = useRouter();
@@ -94,79 +96,105 @@ const VehicleForm = () => {
 
   return (
     <form className="createVehicle" onSubmit={handleSubmit}>
-      <p>Add New Vehicle</p>
-      <label>Make: </label>
-      <input
-        type="text"
-        onChange={(e) => setMake(e.target.value)}
-        value={make}
-      />
-      <label>Model: </label>
-      <input
-        type="text"
-        onChange={(e) => setModel(e.target.value)}
-        value={model}
-      />
-      <label>Color: </label>
-      <input
-        type="text"
-        onChange={(e) => setColor(e.target.value)}
-        value={color}
-      />
-      <label>Year: </label>
-      <input
-        type="text"
-        onChange={(e) => setYear(e.target.value)}
-        value={year}
-      />
-      <label>Chassis: </label>
-      <input
-        type="text"
-        onChange={(e) => setChassis(e.target.value)}
-        value={chassis}
-      />
-      <label>Register: </label>
-      <input
-        type="text"
-        onChange={(e) => setRegister(e.target.value)}
-        value={register}
-      />
-      <label>Status: </label>
-      <Autocomplete
-        disablePortal
-        options={optionsStatus}
-        value={status}
-        onChange={(e, newValue) => setStatus(newValue)}
-        sx={{ width: 200, height: 50, backgroundColor: 'gray'}}
-        renderInput={(params) => <TextField {...params} label="Status" />}
-      />
-      <label>Mileage: </label>
-      <input
-        type="number"
-        onChange={(e) => setMileage(e.target.value)}
-        value={mileage}
-      />
-      <label>Cost per day: </label>
-      <input
-        type="number"
-        onChange={(e) => setCostPerDay(e.target.value)}
-        value={costPerDay}
-      />
-      <label>Last service date: </label>
-      <input
-        type="date"
-        onChange={(e) => setLastServiceDate(e.target.value)}
-        value={lastServiceDate}
-      />
-      <label>Image: </label>
-      <input
-        type="text"
-        onChange={(e) => setImageUrl(e.target.value)}
-        value={imageUrl}
-      />
-      <button type="submit">Add Vehicle</button>
+      <FormControl>
+        <FormLabel>Add New Vehicle</FormLabel>
+        <TextField
+          label="Make"
+          type="text"
+          variant="outlined"
+          onChange={(e) => setMake(e.target.value)}
+          value={make}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+        />
+        <TextField
+          label="Model"
+          type="text"
+          variant="outlined"
+          onChange={(e) => setModel(e.target.value)}
+          value={model}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+        />
+        <TextField
+          label="Color"
+          type="text"
+          variant="outlined"
+          onChange={(e) => setColor(e.target.value)}
+          value={color}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+        />
+        <TextField
+          label="Year"
+          type="text"
+          variant="outlined"
+          onChange={(e) => setYear(e.target.value)}
+          value={year}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+        />
+        <TextField
+          label="Chassis"
+          type="text"
+          variant="outlined"
+          onChange={(e) => setChassis(e.target.value)}
+          value={chassis}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+        />
+        <TextField
+          label="Register"
+          type="text"
+          variant="outlined"
+          onChange={(e) => setRegister(e.target.value)}
+          value={register}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+        />
+        <Autocomplete
+          disablePortal
+          options={optionsStatus}
+          value={status}
+          onChange={(e, newValue) => setStatus(newValue)}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+          renderInput={(params) => <TextField {...params} label="Status" />}
+        />
+        <TextField
+          label="Mileage"
+          type="text"
+          variant="outlined"
+          onChange={(e) => setMileage(e.target.value)}
+          value={mileage}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+        />
+        <TextField
+          label="Cost per day"
+          type="text"
+          variant="outlined"
+          onChange={(e) => setCostPerDay(e.target.value)}
+          value={costPerDay}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+        />
+        <TextField
+          label="Last service date"
+          type="text"
+          variant="outlined"
+          onChange={(e) => setLastServiceDate(e.target.value)}
+          value={lastServiceDate}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+        />
+        <TextField
+          label="Image"
+          type="text"
+          variant="outlined"
+          onChange={(e) => setImageUrl(e.target.value)}
+          value={imageUrl}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+        />
+        <Button
+          type="submit"
+          sx={{ width: 500, height: 50, backgroundColor: "blue", color: "red" }}
+        >
+          Add Vehicle
+        </Button>
 
-      {error && <div className="error">{error}</div>}
+        {error && <div className="error">{error}</div>}
+      </FormControl>
     </form>
   );
 };

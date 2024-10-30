@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useRouter } from "next/navigation";
-import * as React from 'react';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+import * as React from "react";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 import Button from "@mui/material/Button";
 import { FormControl, FormLabel } from "@mui/material";
 
@@ -82,8 +82,8 @@ const UserForm = () => {
   return (
     <form className="createUser" onSubmit={handleSubmit}>
       <FormControl>
-      <FormLabel>Add New Client</FormLabel>
-      <TextField
+        <FormLabel>Add New Client</FormLabel>
+        <TextField
           label="First Name"
           type="text"
           variant="outlined"
@@ -91,7 +91,7 @@ const UserForm = () => {
           value={firstName}
           sx={{ width: 500, height: 50, backgroundColor: "gray" }}
         />
-      <TextField
+        <TextField
           label="Last Name"
           type="text"
           variant="outlined"
@@ -99,7 +99,7 @@ const UserForm = () => {
           value={lastName}
           sx={{ width: 500, height: 50, backgroundColor: "gray" }}
         />
-      <TextField
+        <TextField
           label="Phone"
           type="text"
           variant="outlined"
@@ -107,7 +107,7 @@ const UserForm = () => {
           value={phone}
           sx={{ width: 500, height: 50, backgroundColor: "gray" }}
         />
-      <TextField
+        <TextField
           label="Email"
           type="text"
           variant="outlined"
@@ -123,17 +123,22 @@ const UserForm = () => {
           value={password}
           sx={{ width: 500, height: 50, backgroundColor: "gray" }}
         />
-      <Autocomplete
-        disablePortal
-        options={optionsRole}
-        value={role}
-        onChange={(e, newValue) => setRole(newValue)}
-        sx={{ width: 500, height: 50, backgroundColor: 'gray'}}
-        renderInput={(params) => <TextField {...params} label="Role" />}
-      />
-      <Button type="submit" sx={{ width: 500, height: 50, backgroundColor: "blue", color: "red"}}>Add User</Button>
+        <Autocomplete
+          disablePortal
+          options={optionsRole}
+          value={role}
+          onChange={(e, newValue) => setRole(newValue)}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+          renderInput={(params) => <TextField {...params} label="Role" />}
+        />
+        <Button
+          type="submit"
+          sx={{ width: 500, height: 50, backgroundColor: "blue", color: "red" }}
+        >
+          Add User
+        </Button>
 
-      {error && <div className="error">{error}</div>}
+        {error && <div className="error">{error}</div>}
       </FormControl>
     </form>
   );

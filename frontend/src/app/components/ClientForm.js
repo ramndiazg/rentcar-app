@@ -148,7 +148,12 @@ const ClientForm = () => {
           )}
         />
 
-        <Button type="submit" sx={{ width: 500, height: 50, backgroundColor: "blue", color: "red"}}>Add Client</Button>
+        <Button
+          type="submit"
+          sx={{ width: 500, height: 50, backgroundColor: "blue", color: "red" }}
+        >
+          Add Client
+        </Button>
 
         {error && <div className="error">{error}</div>}
       </FormControl>
