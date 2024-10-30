@@ -6,9 +6,10 @@ import { useRouter } from "next/navigation";
 import UserDetails from "../components/UserDetails";
 import UserForm from "../components/UserForm";
 import Appbar from "../components/Appbar";
+import UserTable from "../components/UserTable";
 
 export default function User() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const router = useRouter();
   const goToDashboard = () => {
     router.push("/dashboard");
@@ -32,16 +33,20 @@ export default function User() {
         return;
       }
 
-      const res = await fetch("http://localhost:3546/api/user", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      try {
+        const res = await fetch("http://localhost:3546/api/user", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
 
-      const result = await res.json();
-      setData(result);
+        const result = await res.json();
+        setData(result);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
     };
 
     fetchData();
@@ -52,7 +57,8 @@ export default function User() {
       <Appbar />
       <div className="" style={{ textAlign: "center", padding: "50px" }}>
         <UserForm />
-        {data && data.map((user) => <UserDetails key={user._id} user={user} />)}
+        {/* {data && data.map((user) => <UserDetails key={user._id} user={user} />)} */}
+        {data.length > 0 ? <UserTable user={data} /> : <p>No users found.</p>}
       </div>
     </div>
   );
