@@ -1,8 +1,8 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
-// import CardActions from "@mui/material/CardActions";
+import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-// import Button from "@mui/material/Button";
+import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 const ClientDetails = ({ client }) => {
@@ -33,9 +33,9 @@ const ClientDetails = ({ client }) => {
               {client.preferredPaymentMethod}
             </Typography>
           </CardContent>
-          {/* <CardActions>
+          <CardActions>
             <Button size="small">Delete</Button>
-          </CardActions> */}
+          </CardActions>
         </Card>
       </div>
     </div>

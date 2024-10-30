@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import Button from "@mui/material/Button";
+import { FormControl, FormLabel } from "@mui/material";
 
 const UserForm = () => {
   const router = useRouter();
@@ -79,49 +81,60 @@ const UserForm = () => {
 
   return (
     <form className="createUser" onSubmit={handleSubmit}>
-      <p>Add New User</p>
-      <label>First Name: </label>
-      <input
-        type="text"
-        onChange={(e) => setFirstName(e.target.value)}
-        value={firstName}
-      />
-      <label>Last Name: </label>
-      <input
-        type="text"
-        onChange={(e) => setLastName(e.target.value)}
-        value={lastName}
-      />
-      <label>Phone: </label>
-      <input
-        type="text"
-        onChange={(e) => setPhone(e.target.value)}
-        value={phone}
-      />
-      <label>Email: </label>
-      <input
-        type="text"
-        onChange={(e) => setEmail(e.target.value)}
-        value={email}
-      />
-      <label>Password: </label>
-      <input
-        type="password"
-        onChange={(e) => setPassword(e.target.value)}
-        value={password}
-      />
-      <label>Role: </label>
+      <FormControl>
+      <FormLabel>Add New Client</FormLabel>
+      <TextField
+          label="First Name"
+          type="text"
+          variant="outlined"
+          onChange={(e) => setFirstName(e.target.value)}
+          value={firstName}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+        />
+      <TextField
+          label="Last Name"
+          type="text"
+          variant="outlined"
+          onChange={(e) => setLastName(e.target.value)}
+          value={lastName}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+        />
+      <TextField
+          label="Phone"
+          type="text"
+          variant="outlined"
+          onChange={(e) => setPhone(e.target.value)}
+          value={phone}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+        />
+      <TextField
+          label="Email"
+          type="text"
+          variant="outlined"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+        />
+        <TextField
+          label="Password"
+          type="password"
+          variant="outlined"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
+        />
       <Autocomplete
         disablePortal
         options={optionsRole}
         value={role}
         onChange={(e, newValue) => setRole(newValue)}
-        sx={{ width: 200, height: 50, backgroundColor: 'gray'}}
+        sx={{ width: 500, height: 50, backgroundColor: 'gray'}}
         renderInput={(params) => <TextField {...params} label="Role" />}
       />
-      <button type="submit">Add User</button>
+      <Button type="submit" sx={{ width: 500, height: 50, backgroundColor: "blue", color: "red"}}>Add User</Button>
 
       {error && <div className="error">{error}</div>}
+      </FormControl>
     </form>
   );
 };
