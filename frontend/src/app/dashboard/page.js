@@ -4,6 +4,7 @@ import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Appbar from "../components/Appbar";
+import { styled } from "@mui/system";
 import {
   Container,
   Typography,
@@ -13,6 +14,20 @@ import {
   Button,
   Stack,
 } from "@mui/material";
+
+const StyledCard = styled(Card)({
+  maxWidth: 500,
+  width: "100%"
+});
+
+const StyledButton = styled(Button)({
+  marginTop: 12,
+  width: "150px"
+});
+
+const StyledStack = styled(Stack)({
+  alignItems: "center"
+});
 
 export default function Dashboard() {
   const [data, setData] = useState(null);
@@ -65,63 +80,57 @@ export default function Dashboard() {
     <Container>
       <Box sx={{ textAlign: "center", marginY: 4 }}>
         <Typography variant="h4">Dashboard</Typography>
-        {/* <Typography variant="subtitle1" color="textSecondary">
-          Welcome!
-        </Typography> */}
       </Box>
 
-      <Stack spacing={3} sx={{ alignItems: "center" }}>
-        <Card variant="outlined" sx={{ maxWidth: 500, width: "100%" }}>
+      <StyledStack spacing={3}>
+        <StyledCard variant="outlined">
           <CardContent>
             <Typography variant="h6">Vehicle</Typography>
             <Typography variant="body2" color="textSecondary">
               Go to the vehicle page to manage vehicle information.
             </Typography>
-            <Button
+            <StyledButton
               variant="contained"
               color="primary"
               onClick={() => goToPage("/vehicle")}
-              sx={{ marginTop: 2 }}
             >
               Go to Vehicle
-            </Button>
+            </StyledButton>
           </CardContent>
-        </Card>
+        </StyledCard>
 
-        <Card variant="outlined" sx={{ maxWidth: 500, width: "100%" }}>
+        <StyledCard variant="outlined">
           <CardContent>
             <Typography variant="h6">Client</Typography>
             <Typography variant="body2" color="textSecondary">
               Go to the client page to manage client details.
             </Typography>
-            <Button
+            <StyledButton
               variant="contained"
               color="primary"
               onClick={() => goToPage("/client")}
-              sx={{ marginTop: 2 }}
             >
               Go to Client
-            </Button>
+            </StyledButton>
           </CardContent>
-        </Card>
+        </StyledCard>
 
-        <Card variant="outlined" sx={{ maxWidth: 500, width: "100%" }}>
+        <StyledCard variant="outlined">
           <CardContent>
             <Typography variant="h6">User</Typography>
             <Typography variant="body2" color="textSecondary">
               Go to the user page to manage user settings.
             </Typography>
-            <Button
+            <StyledButton
               variant="contained"
               color="primary"
               onClick={() => goToPage("/user")}
-              sx={{ marginTop: 2 }}
             >
               Go to User
-            </Button>
+            </StyledButton>
           </CardContent>
-        </Card>
-      </Stack>
+        </StyledCard>
+      </StyledStack>
     </Container>
     </div>
   );

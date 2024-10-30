@@ -8,7 +8,7 @@ import TextField from "@mui/material/TextField";
 import { FormControl, FormLabel } from "@mui/material";
 import { styled } from "@mui/system";
 
-const Container = styled("div")({
+const StyledContainer = styled("div")({
   textAlign: "center",
   padding: "50px",
 });
@@ -71,7 +71,7 @@ export default function LoginPage() {
   };
 
   return (
-    <Container>
+    <StyledContainer>
       <form onSubmit={handleSubmit}>
       <StyledFormControl>
       <StyledFormLabel>Login</StyledFormLabel>
@@ -97,6 +97,6 @@ export default function LoginPage() {
         {error && <div className="error">{error}</div>}
         </StyledFormControl>
       </form>
-    </Container>
+    </StyledContainer>
   );
 }
