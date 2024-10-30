@@ -6,9 +6,10 @@ import { useRouter } from "next/navigation";
 import VehicleDetails from "../components/VehicleDetails";
 import VehicleForm from "../components/VehicleForm";
 import Appbar from "../components/Appbar";
+import VehicleTable from "../components/VehicleTable";
 
 export default function Vehicle() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const router = useRouter();
   const goToDashboard = () => {
     router.push("/dashboard");
@@ -32,16 +33,20 @@ export default function Vehicle() {
         return;
       }
 
-      const res = await fetch("http://localhost:3546/api/vehicle", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
+      try {
+        const res = await fetch("http://localhost:3546/api/vehicle", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
 
-      const result = await res.json();
-      setData(result);
+        const result = await res.json();
+        setData(result);
+      } catch (error) {
+        console.error("Error fetching vehicle data:", error);
+      }
     };
 
     fetchData();
@@ -52,10 +57,15 @@ export default function Vehicle() {
       <Appbar />
       <div className="" style={{ textAlign: "center", padding: "50px" }}>
         <VehicleForm />
-        {data &&
+        {/* {data &&
           data.map((vehicle) => (
             <VehicleDetails key={vehicle._id} vehicle={vehicle} />
-          ))}
+          ))} */}
+        {data.length > 0 ? (
+          <VehicleTable vehicle={data} />
+        ) : (
+          <p>No vehicles found.</p>
+        )}
       </div>
     </div>
   );
