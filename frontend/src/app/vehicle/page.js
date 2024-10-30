@@ -7,6 +7,7 @@ import VehicleDetails from "../components/VehicleDetails";
 import VehicleForm from "../components/VehicleForm";
 import Appbar from "../components/Appbar";
 import VehicleTable from "../components/VehicleTable";
+import VehicleCarousel from "../components/VehicleCarousel";
 
 export default function Vehicle() {
   const [data, setData] = useState([]);
@@ -55,6 +56,13 @@ export default function Vehicle() {
   return (
     <div className="vehicle">
       <Appbar />
+      <div>
+        {data.length > 0 ? (
+          <VehicleCarousel vehicles={data} />
+        ) : (
+          <p>No vehicles found.</p>
+        )}
+      </div>
       <div className="" style={{ textAlign: "center", padding: "50px" }}>
         <VehicleForm />
         {/* {data &&
