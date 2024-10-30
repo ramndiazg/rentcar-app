@@ -6,6 +6,47 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import Button from "@mui/material/Button";
 import { FormControl, FormLabel } from "@mui/material";
+import { styled } from "@mui/system";
+
+const StyledContainer = styled("div")({
+  textAlign: "center",
+  padding: "50px",
+});
+
+const StyledFormControl = styled(FormControl)({
+  alignItems: "center",
+});
+
+const StyledFormLabel = styled(FormLabel)({
+  width: 500,
+  height: 50,
+  color: "white",
+});
+
+const StyledTextField = styled(TextField)({
+  width: 500,
+  height: 50,
+  backgroundColor: "#bbdefb",
+  borderRadius: 3,
+  margin: "4px 8px",
+});
+
+const StyledAutoComplete = styled(Autocomplete)({
+  width: 500,
+  height: 50,
+  backgroundColor: "#bbdefb",
+  borderRadius: 3,
+  margin: "4px 8px",
+});
+
+const StyledButton = styled(Button)({
+  width: 200,
+  height: 50,
+  backgroundColor: "#01579b",
+  color: "white",
+  borderRadius: 6,
+  margin: "4px 8px",
+});
 
 const VehicleForm = () => {
   const router = useRouter();
@@ -96,105 +137,93 @@ const VehicleForm = () => {
 
   return (
     <form className="createVehicle" onSubmit={handleSubmit}>
-      <FormControl>
-        <FormLabel>Add New Vehicle</FormLabel>
-        <TextField
+      <StyledFormControl>
+        <StyledFormLabel>Add New Vehicle</StyledFormLabel>
+        <StyledTextField
           label="Make"
           type="text"
           variant="outlined"
           onChange={(e) => setMake(e.target.value)}
           value={make}
-          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
         />
-        <TextField
+        <StyledTextField
           label="Model"
           type="text"
           variant="outlined"
           onChange={(e) => setModel(e.target.value)}
           value={model}
-          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
         />
-        <TextField
+        <StyledTextField
           label="Color"
           type="text"
           variant="outlined"
           onChange={(e) => setColor(e.target.value)}
           value={color}
-          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
         />
-        <TextField
+        <StyledTextField
           label="Year"
           type="text"
           variant="outlined"
           onChange={(e) => setYear(e.target.value)}
           value={year}
-          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
         />
-        <TextField
+        <StyledTextField
           label="Chassis"
           type="text"
           variant="outlined"
           onChange={(e) => setChassis(e.target.value)}
           value={chassis}
-          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
         />
-        <TextField
+        <StyledTextField
           label="Register"
           type="text"
           variant="outlined"
           onChange={(e) => setRegister(e.target.value)}
           value={register}
-          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
         />
-        <Autocomplete
+        <StyledAutoComplete
           disablePortal
           options={optionsStatus}
           value={status}
           onChange={(e, newValue) => setStatus(newValue)}
-          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
           renderInput={(params) => <TextField {...params} label="Status" />}
         />
-        <TextField
+        <StyledTextField
           label="Mileage"
           type="text"
           variant="outlined"
           onChange={(e) => setMileage(e.target.value)}
           value={mileage}
-          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
         />
-        <TextField
+        <StyledTextField
           label="Cost per day"
           type="text"
           variant="outlined"
           onChange={(e) => setCostPerDay(e.target.value)}
           value={costPerDay}
-          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
         />
-        <TextField
+        <StyledTextField
           label="Last service date"
           type="date"
           variant="outlined"
           onChange={(e) => setLastServiceDate(e.target.value)}
           value={lastServiceDate}
-          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
         />
-        <TextField
+        <StyledTextField
           label="Image Url"
           type="text"
           variant="outlined"
           onChange={(e) => setImageUrl(e.target.value)}
           value={imageUrl}
-          sx={{ width: 500, height: 50, backgroundColor: "gray" }}
         />
-        <Button
+        <StyledButton
           type="submit"
-          sx={{ width: 500, height: 50, backgroundColor: "blue", color: "red" }}
         >
           Add Vehicle
-        </Button>
+        </StyledButton>
 
         {error && <div className="error">{error}</div>}
-      </FormControl>
+      </StyledFormControl>
     </form>
   );
 };
