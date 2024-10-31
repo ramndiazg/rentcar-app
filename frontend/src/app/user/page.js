@@ -3,9 +3,10 @@
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import UserDetails from "../components/UserDetails";
+// import UserDetails from "../components/UserDetails";
 import UserForm from "../components/UserForm";
-import Appbar from "../components/Appbar";
+// import Appbar from "../components/Appbar";
+import AppbarTest from "../components/AppbarTest"
 import UserTable from "../components/UserTable";
 
 export default function User() {
@@ -54,7 +55,8 @@ export default function User() {
 
   return (
     <div>
-      <Appbar />
+      {/* <Appbar /> */}
+      <AppbarTest/>
       <div className="" style={{ textAlign: "center", padding: "50px" }}>
         <UserForm />
         {/* {data && data.map((user) => <UserDetails key={user._id} user={user} />)} */}

@@ -3,7 +3,8 @@
 import { jwtDecode } from "jwt-decode";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Appbar from "../components/Appbar";
+// import Appbar from "../components/Appbar";
+import AppbarTest from "../components/AppbarTest"
 import { styled } from "@mui/system";
 import {
   Container,
@@ -76,7 +77,8 @@ export default function Dashboard() {
 
   return (
     <div>
-      <Appbar />
+      {/* <Appbar /> */}
+      <AppbarTest/>
     <Container>
       <Box sx={{ textAlign: "center", marginY: 4 }}>
         <Typography variant="h4">Dashboard</Typography>
