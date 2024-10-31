@@ -14,7 +14,12 @@ const StyledContainer = styled("div")({
 });
 
 const StyledFormControl = styled(FormControl)({
+  p: 2,
   alignItems: "center",
+  minWidth: 200,
+  maxWidth: '100%',
+  overflow: 'auto',
+  resize: 'horizontal',
 });
 
 const StyledFormLabel = styled(FormLabel)({
