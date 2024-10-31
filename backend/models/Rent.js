@@ -13,15 +13,27 @@ const RentSchema = new Schema(
       ref: "Vehicle",
       required: true,
     },
-    user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-    rentDays: { type: Number, required: true },
-    rentAmount: { type: Number, required: true },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true },
     rentStatus: {
       type: String,
       enum: ["paid", "pending", "cancelled"],
       default: "pending",
       message: "{VALUE} is not supported",
       required: true,
+    },
+    rentDays: {
+      type: Number,
+      enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      default: 3,
+      message: "{VALUE} is not supported",
+      required: true
+    },
+    rentAmount: {
+      type: Number,
+      required: true
     },
   },
   { timestamps: true }
