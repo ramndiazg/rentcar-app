@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import VehicleForm from "../components/VehicleForm";
 // import Appbar from "../components/Appbar";
 import AppbarTest from "../components/AppbarTest"
+import Footer from "../components/Footer";
 import VehicleTable from "../components/VehicleTable";
 import VehicleCarousel from "../components/VehicleCarousel";
 
@@ -77,6 +78,7 @@ export default function Vehicle() {
           <p>No vehicles found.</p>
         )}
       </div>
+      <Footer />
     </div>
   );
 }

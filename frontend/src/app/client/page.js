@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import ClientForm from "../components/ClientForm";
 // import Appbar from "../components/Appbar";
 import AppbarTest from "../components/AppbarTest"
+import Footer from "../components/Footer";
 import ClientTable from "../components/ClientTable";
 
 export default function Client() {
@@ -65,6 +66,7 @@ export default function Client() {
           ))} */}
           {data.length > 0 ? <ClientTable client={data} /> : <p>No clients found.</p>}
       </div>
+      <Footer/>
     </div>
   );
 }

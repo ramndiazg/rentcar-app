@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import UserForm from "../components/UserForm";
 // import Appbar from "../components/Appbar";
 import AppbarTest from "../components/AppbarTest"
+import Footer from "../components/Footer";
 import UserTable from "../components/UserTable";
 
 export default function User() {
@@ -62,6 +63,7 @@ export default function User() {
         {/* {data && data.map((user) => <UserDetails key={user._id} user={user} />)} */}
         {data.length > 0 ? <UserTable user={data} /> : <p>No users found.</p>}
       </div>
+      <Footer />
     </div>
   );
 }
